@@ -47,7 +47,7 @@ class Maker
     public function filterCredentialPath($path)
     {
         if (!file_exists($path)) {
-            return realpath(__DIR__ . '/../' .self::CLIENT_SECRET);
+            return realpath(__DIR__ . '/../' . self::CLIENT_SECRET);
         }
         return $path;
     }
