@@ -13,6 +13,8 @@ class Attendee
     const ACESSS_TYPE      = 'offline';
 
     private $googleClient;
+
+    private $email;
     /**
      * Default constructor
      * @param string $credentialFile
@@ -49,5 +51,16 @@ class Attendee
             return realpath(__DIR__ . '/../' . self::CLIENT_SECRET);
         }
         return $path;
+    }
+
+    /**
+     * Create array with key =>'email'
+     * @return array
+     */
+    private function serializeEmail()
+    {
+        return array(
+            'email'=>$this->email
+        );
     }
 }
