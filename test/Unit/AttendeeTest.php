@@ -2,19 +2,19 @@
 
 namespace Appointment\Test;
 
-use Appointment\Maker;
+use Appointment\Attendee;
 
 class MakerTest extends \PHPUnit\Framework\TestCase
 {
-    private $maker;
+    private $attendee;
 
     public function setUp()
     {
-        $this->maker = new Maker();
+        $this->attendee = new Attendee();
     }
 
     public function testInstanceNotNull()
     {
-        $this->assertNotNull($this->maker);
+        $this->assertNotNull($this->attendee);
     }
 }

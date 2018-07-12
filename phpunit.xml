@@ -1,7 +1,7 @@
 <phpunit bootstrap="./test/bootstrap.php">
   <testsuites>
-    <testsuite name="maker">
-      <file>./test/Unit/MakerTest.php</file>
+    <testsuite name="attendee">
+      <file>./test/Unit/AttendeeTest.php</file>
     </testsuite>
   </testsuites>
 </phpunit>

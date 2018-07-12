@@ -5,7 +5,7 @@ namespace Appointment;
 /**
  * Google Api Client
  */
-class Maker
+class Attendee
 {
     const CLIENT_SECRET    = 'client_secret.json';
     const CREDENTIAL_FILE  = 'credentials.json';
@@ -13,7 +13,6 @@ class Maker
     const ACESSS_TYPE      = 'offline';
 
     private $googleClient;
-
     /**
      * Default constructor
      * @param string $credentialFile

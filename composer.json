@@ -21,7 +21,7 @@
         }
     },
     "scripts": {
-        "test:maker:verbose":"php ./phpunit  --configuration=phpunit.xml --testsuite maker -vvv --debug",
+        "test:attendee:verbose":"php ./phpunit  --configuration=phpunit.xml --testsuite attendee -vvv --debug",
         "cs-fix": "php ./php-cs-fixer fix ./src -vvv --rules=@PSR2",
         "cs-fix:test": "php ./php-cs-fixer fix ./test -vvv --rules=@PSR2"
     }
