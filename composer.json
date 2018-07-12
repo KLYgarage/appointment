@@ -11,7 +11,18 @@
     "require": {
         "google/apiclient": "^2.2"
     },
-    "autoload": {},
-    "autoload-dev": {},
-    "scripts": {}
+    "autoload": {
+         "psr-4": {"Appointment\\": "src/"},
+         "files": ["src/helpers.php"]
+    },
+    "autoload-dev": {
+         "psr-4": {
+            "Appointment\\Test\\": "test/"
+        }
+    },
+    "scripts": {
+        "test:maker:verbose":"php ./phpunit  --configuration=phpunit.xml --testsuite maker -vvv --debug",
+        "cs-fix": "php ./php-cs-fixer fix ./src -vvv --rules=@PSR2",
+        "cs-fix:test": "php ./php-cs-fixer fix ./test -vvv --rules=@PSR2"
+    }
 }
