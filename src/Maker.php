@@ -12,6 +12,8 @@ class Maker
     const APPLICATION_NAME = 'Interview App';
     const ACESSS_TYPE      = 'offline';
 
+    private $googleClient;
+
     /**
      * Default constructor
      * @param string $credentialFile
@@ -21,7 +23,6 @@ class Maker
      * @param string $clientSecretFile
      */
     public function __construct(
-        $credentialFile = '',
         $applicationName = self::APPLICATION_NAME,
         $scope = \Google_Service_Calendar::CALENDAR,
         $accessType = self::ACESSS_TYPE,
@@ -41,7 +42,7 @@ class Maker
     /**
      * Check if path exist
      * @param  string $path
-     * @return bool
+     * @return string
      */
     public function filterCredentialPath($path)
     {
