@@ -26,11 +26,13 @@ class AttandeeConfiguration
     /**
      * Constructor
      */
-    public function __construct()
+    public function __construct($args = null)
     {
-        $this->setupAppSettings();
+        if (is_null($args)) {
+            $this->setupAppSettings();
 
-        $this->setupCredentials();
+            $this->setupCredentials();
+        }
     }
     /**
      * Get application name
@@ -80,7 +82,7 @@ class AttandeeConfiguration
     {
         $appSettings = json_decode(
             file_get_contents(
-                filterFilePath(getcwd().'/'.self::CONFIGURATION_FILE)
+                filterFilePath(getcwd() . '/' . self::CONFIGURATION_FILE)
             ),
             true
         );
@@ -99,7 +101,7 @@ class AttandeeConfiguration
     {
         $credentials = json_decode(
             file_get_contents(
-                filterFilePath(getcwd().'/'.self::CREDENTIAL_FILE)
+                filterFilePath(getcwd() . '/' . self::CREDENTIAL_FILE)
             ),
             true
         );
