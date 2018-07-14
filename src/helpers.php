@@ -26,7 +26,6 @@ function filterFilePath($path)
     if (!file_get_contents($path)) {
         throw new \Exception("File not found", 1);
     }
-
     return $path;
 }
 /**
