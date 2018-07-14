@@ -5,7 +5,6 @@ namespace Appointment\Test;
 use Appointment\Attendee;
 use Appointment\AttandeeConfiguration;
 
-
 class AttandeeTest extends \PHPUnit\Framework\TestCase
 {
     private $attendee;
@@ -14,7 +13,6 @@ class AttandeeTest extends \PHPUnit\Framework\TestCase
 
     public function setUp()
     {
-
         $this->config = new AttandeeConfiguration();
 
         $this->attendee = new Attendee(

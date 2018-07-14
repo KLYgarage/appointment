@@ -3,12 +3,12 @@
 namespace Appointment;
 
 use function Appointment\filterFilePath;
+
 /**
  *
  */
 class AttandeeConfiguration
 {
-
     private $applicationName;
 
     private $calendarId;
@@ -28,10 +28,9 @@ class AttandeeConfiguration
      */
     public function __construct()
     {
-    	$this->getAppSettings();
+        $this->getAppSettings();
 
-    	$this->getCredentials();
-
+        $this->getCredentials();
     }
     /**
      * Get application name
@@ -39,7 +38,7 @@ class AttandeeConfiguration
      */
     public function getApplicationName()
     {
-    	return $this->applicationName;
+        return $this->applicationName;
     }
     /**
      * Get calendar Id
@@ -47,7 +46,7 @@ class AttandeeConfiguration
      */
     public function getCalendarId()
     {
-    	return $this->calendarId;
+        return $this->calendarId;
     }
     /**
      * Get access type
@@ -55,7 +54,7 @@ class AttandeeConfiguration
      */
     public function getAccessType()
     {
-    	return $this->accessType;
+        return $this->accessType;
     }
     /**
      * Get client Secret
@@ -63,7 +62,7 @@ class AttandeeConfiguration
      */
     public function getClientSecret()
     {
-    	return $this->clientSecret;
+        return $this->clientSecret;
     }
     /**
      * Get oauth
@@ -71,7 +70,7 @@ class AttandeeConfiguration
      */
     public function getOauth()
     {
-    	return $this->oauth;
+        return $this->oauth;
     }
     /**
      * Get application settings
@@ -81,7 +80,7 @@ class AttandeeConfiguration
     {
         $appSettings = json_decode(
             file_get_contents(
-            	filterFilePath(getcwd().'/'.self::CONFIGURATION_FILE)
+                filterFilePath(getcwd().'/'.self::CONFIGURATION_FILE)
             ),
             true
         );
@@ -91,7 +90,6 @@ class AttandeeConfiguration
         $this->calendarId = $appSettings['calendar_id'];
 
         $this->accessType = $appSettings['access_type'];
-
     }
     /**
      * get credential
@@ -100,17 +98,14 @@ class AttandeeConfiguration
     private function getCredentials()
     {
         $credentials = json_decode(
-        	file_get_contents(
-            	filterFilePath(getcwd().'/'.self::CREDENTIAL_FILE)
+            file_get_contents(
+                filterFilePath(getcwd().'/'.self::CREDENTIAL_FILE)
             ),
             true
         );
 
-       $this->clientSecret = $credentials['client_secret'];
+        $this->clientSecret = $credentials['client_secret'];
 
-       $this->oauth = $credentials['oauth'];
-
+        $this->oauth = $credentials['oauth'];
     }
-
-
 }

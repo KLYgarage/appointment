@@ -21,10 +21,11 @@ function filterString($str)
  * @return string
  * @throws \Exception
  */
-function filterFilePath($path){
-	if(!file_get_contents($path)){
-		throw new \Exception("File not found", 1);
-	}
+function filterFilePath($path)
+{
+    if (!file_get_contents($path)) {
+        throw new \Exception("File not found", 1);
+    }
 
-	return $path;
+    return $path;
 }

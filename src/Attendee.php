@@ -3,12 +3,12 @@
 namespace Appointment;
 
 use Appointment\AttandeeConfiguration;
+
 /**
  * Google Api Client
  */
 class Attendee
 {
-    
     private $googleClient;
 
     private $googleService;
@@ -19,18 +19,18 @@ class Attendee
      * Consturctor
      * @param AttandeeConfiguration $config
      */
-    public function __construct(AttandeeConfiguration $config) {
-
+    public function __construct(AttandeeConfiguration $config)
+    {
         $this->config = $config;
 
         $this->initState();
-        
     }
     /**
      * Init Client and Service State
      * @return void
      */
-    private function initState(){
+    private function initState()
+    {
         $this->googleClient = new \Google_Client();
         $this->googleClient->setApplicationName(
             $this->config->getApplicationName()
@@ -68,7 +68,6 @@ class Attendee
         );
 
         try {
-
             $results = $this->googleService->events->listEvents($calendarId, $optParams);
 
             $events = array();
@@ -78,13 +77,9 @@ class Attendee
             }
 
             return $events;
-
         } catch (\Google_Service_Exception $e) {
-
             return false;
-
         }
-
     }
     /**
      * Get google client
