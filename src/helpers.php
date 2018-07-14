@@ -32,11 +32,11 @@ function filterFilePath($path)
  * [isSlotAvailable description]
  * @param  string  $startTime
  * @param  string  $endTime
+ * @param  array $dateConfigs
  * @return boolean
  */
-function isSlotAvailable($startTime, $endTime)
+function isSlotAvailable($startTime, $endTime, $dateConfigs)
 {
-    $dateConfigs = loadConfiguration('configuration.json');
     $date = date_create($startTime);
     $day = strtolower((date_format($date, "l")));
     $startHours = substr($startTime, 11, 5);
@@ -52,63 +52,4 @@ function isSlotAvailable($startTime, $endTime)
     }
 
     return false;
-}
-
-function getEvents($startTime, $endTime)
-{
-    $client = getClient();
-    $service = new \Google_Service_Calendar($client);
-    $calendarId = 'primary';
-
-    $optParams = array(
-      'maxResults' => 10,
-      'orderBy' => 'startTime',
-      'singleEvents' => true,
-      'timeMin' => date_format(date_create($startTime), "c"),
-      'timeMax' => date_format(date_create($endTime), "c"),
-    );
-
-    return $service->events->listEvents($calendarId, $optParams);
-}
-
-/**
- * [loadConfiguration description]
- * @param  string $file filename
- * @return mixed
- */
-function loadConfiguration($file)
-{
-    $confPath = getcwd() . '/' . $file;
-
-    if (file_exists($confPath)) {
-        $config = json_decode(file_get_contents($confPath), true);
-
-        return $config;
-    }
-
-    throw \Exception('Configuration file not found');
-}
-
-function getClient()
-{
-    $credentialsPath = getcwd().'/credentials/';
-
-    $client = new \Google_Client();
-    $client->setApplicationName('Google Calendar API PHP Quickstart');
-    $client->setScopes(\Google_Service_Calendar::CALENDAR);
-
-    $client->setAuthConfig($credentialsPath.'client_secret.json');
-    $client->setAccessType('offline');
-
-    // Load previously authorized credentials from a file.
-    $accessToken = json_decode(file_get_contents($credentialsPath.'credentials.json'), true);
-    $client->setAccessToken($accessToken);
-    
-    // Refresh the token if it's expired.
-    if ($client->isAccessTokenExpired()) {
-        $client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
-        file_put_contents($credentialsPath.'credentials.json', json_encode($client->getAccessToken()));
-    }
-
-    return $client;
 }

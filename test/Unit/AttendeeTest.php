@@ -2,8 +2,8 @@
 
 namespace Appointment\Test;
 
-use Appointment\Attendee;
 use Appointment\AttandeeConfiguration;
+use Appointment\Attendee;
 
 class AttandeeTest extends \PHPUnit\Framework\TestCase
 {
@@ -27,8 +27,15 @@ class AttandeeTest extends \PHPUnit\Framework\TestCase
 
     public function testListEvents()
     {
-        $events = $this->attendee->listEvents();
+        $events = $this->attendee->makeRequest(
+            $this->attendee::FETCH_LIST_EVENTS,
+            $optParams = array(
+                'maxResults'   => 10,
+                'orderBy'      => 'startTime',
+                'singleEvents' => true
+            )
+        );
 
-        $this->assertNotFalse($events);
+        $this->assertNotNull($events);
     }
 }
