@@ -28,9 +28,9 @@ class AttandeeConfiguration
      */
     public function __construct()
     {
-        $this->getAppSettings();
+        $this->setupAppSettings();
 
-        $this->getCredentials();
+        $this->setupCredentials();
     }
     /**
      * Get application name
@@ -76,7 +76,7 @@ class AttandeeConfiguration
      * Get application settings
      * @return array
      */
-    private function getAppSettings()
+    private function setupAppSettings()
     {
         $appSettings = json_decode(
             file_get_contents(
@@ -95,7 +95,7 @@ class AttandeeConfiguration
      * get credential
      * @return void
      */
-    private function getCredentials()
+    private function setupCredentials()
     {
         $credentials = json_decode(
             file_get_contents(
