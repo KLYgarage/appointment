@@ -54,7 +54,7 @@ class AttandeeConfiguration
     }
     /**
      * Get access type
-     * @return [type] [description]
+     * @return string
      */
     public function getAccessType()
     {

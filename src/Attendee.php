@@ -97,7 +97,7 @@ class Attendee
     }
     /**
      * Get configuration
-     * @return [type] [description]
+     * @return AttendeConfiguration
      */
     public function getConfig()
     {
