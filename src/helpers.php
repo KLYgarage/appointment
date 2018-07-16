@@ -33,9 +33,10 @@ function filterFilePath($path)
  * @param  string  $startTime
  * @param  string  $endTime
  * @param  array $dateConfigs
+ * @param  array $eventsOnGCal
  * @return boolean
  */
-function isSlotAvailable($startTime, $endTime, $dateConfigs)
+function isSlotAvailable($startTime, $endTime, $dateConfigs, $eventsOnGCal)
 {
     $date = date_create($startTime);
     $day = strtolower((date_format($date, "l")));
@@ -43,8 +44,7 @@ function isSlotAvailable($startTime, $endTime, $dateConfigs)
     $endHours = substr($endTime, 11, 5);
 
     $slotsOnConfig = array_column($dateConfigs['available_slots'], $day);
-    $eventsOnGCal = getEvents($startTime, $endTime);
-
+    
     if (!empty($slotsOnConfig)) {
         if (in_array($startHours." - ".$endHours, $slotsOnConfig[0]) && $eventsOnGCal->count()==0) {
             return true;
