@@ -34,6 +34,7 @@ function filterFilePath($path)
  * @param  string  $startTime
  * @param  string  $endTime
  * @param  array $config
+ * @param  array $events
  * @return boolean
  */
 function isSlotAvailable($startTime, $endTime, $config = array(), $events)

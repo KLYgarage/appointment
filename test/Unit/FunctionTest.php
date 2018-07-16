@@ -24,9 +24,19 @@ class FunctionTest extends \PHPUnit\Framework\TestCase
     public function testCheckIfSlotIsAvailable()
     {
         $config = $this->attendeeConfiguration->getDateSlots();
+        $calendarId = $this->attendeeConfiguration->getCalendarId();
         $startTime = $this->startTime;
         $endTime = $this->endTime;
-        $events = $this->attendee->listEvents($startTime, $endTime);
+
+        $options = array(
+            'maxResults'   => 10,
+            'orderBy'      => 'startTime',
+            'singleEvents' => true,
+            'timeMin'      => $startTime,
+            'timeMax'      => $endTime
+        );
+
+        $events = $this->attendee->listEvents($calendarId, $options);
         
         $this->assertTrue(isSlotAvailable($startTime, $endTime, $config, $events));
     }

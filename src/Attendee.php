@@ -14,7 +14,10 @@ class Attendee
     private $googleService;
 
     private $config;
-    
+
+
+    const FETCH_LIST_EVENTS = 'list_events';
+
     /**
      * Consturctor
      * @param AttandeeConfiguration $config
@@ -53,36 +56,44 @@ class Attendee
         );
     }
     /**
+     * Make request to google api
+     * @param  string $type
+     * @param  array $options
+     * @return mixed
+     */
+    public function makeRequest($type = '', $options = array())
+    {
+        switch ($type) {
+            case self::FETCH_LIST_EVENTS:
+                return $this->listEvents(
+                    $this->filterCalendarId(
+                        $this->config->getCalendarId()
+                    ),
+                   $options
+                );
+            default:
+                throw new \Exception("Type undefined", 1);
+
+        }
+    }
+    /**
      * List events based on calendarID
      * @param  string $startTime string date('c') format
      * @param  string $endTime string date('c') format
-     * @return bool|array
+     * @return array
+     * @throws \Google_Service_Exception
      */
-    public function listEvents($startTime, $endTime)
+    public function listEvents($calendarId, $options = array())
     {
-        $calendarId = $this->config->getCalendarId();
-
-        $optParams = array(
-            'maxResults'   => 10,
-            'orderBy'      => 'startTime',
-            'singleEvents' => true,
-            'timeMin'      => $startTime,
-            'timeMax'      => $endTime
+        $results = $this->googleService->events->listEvents(
+            $calendarId,
+            $options
         );
-
-        try {
-            $results = $this->googleService->events->listEvents($calendarId, $optParams);
-
-            $events = array();
-
-            foreach ($results->getItems() as $event) {
-                array_push($events, $event->getSummary());
-            }
-
-            return $events;
-        } catch (\Google_Service_Exception $e) {
-            return false;
+        $events  = array();
+        foreach ($results->getItems() as $event) {
+            array_push($events, $event);
         }
+        return $events;
     }
     /**
      * Get configuration
@@ -113,5 +124,18 @@ class Attendee
                 $this->googleClient->getRefreshToken()
             );
         }
+    }
+    /**
+     * Filter calendar id
+     * @param  string $calendarId
+     * @return string
+     * @throws \Exception
+     */
+    private function filterCalendarId($calendarId)
+    {
+        if (!isset($calendarId) && is_null($calendarId)) {
+            throw new \Exception("Calendar Id required", 1);
+        }
+        return $calendarId;
     }
 }
