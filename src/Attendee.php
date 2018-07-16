@@ -83,7 +83,6 @@ class Attendee
      */
     public function listEvents($calendarId, $options = array())
     {
-
         $results = $this->googleService->events->listEvents(
             $calendarId,
             $options

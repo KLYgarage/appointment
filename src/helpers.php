@@ -15,7 +15,6 @@ function filterString($str)
     }
     throw new \Exception("Not a string", 1);
 }
-
 /**
  * Filter file path
  * @param  string $path
@@ -38,7 +37,6 @@ function filterFilePath($path)
  */
 function isSlotAvailable($startTime, $endTime, $dateConfigs)
 {
-
     $date = date_create($startTime);
     $day = strtolower((date_format($date, "l")));
     $startHours = substr($startTime, 11, 5);
@@ -51,6 +49,7 @@ function isSlotAvailable($startTime, $endTime, $dateConfigs)
         if (in_array($startHours." - ".$endHours, $slotsOnConfig[0]) && $eventsOnGCal->count()==0) {
             return true;
         }
+    }
 
     return false;
 }
