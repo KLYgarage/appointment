@@ -15,7 +15,6 @@ class Attendee
 
     private $config;
 
-
     const FETCH_LIST_EVENTS = 'list_events';
 
     /**
@@ -83,7 +82,6 @@ class Attendee
      */
     public function listEvents($calendarId, $options = array())
     {
-
         $results = $this->googleService->events->listEvents(
             $calendarId,
             $options

@@ -4,6 +4,7 @@ namespace Appointment\Test;
 
 use Appointment\AttandeeConfiguration;
 use Appointment\Attendee;
+use Appointment\AttandeeConfiguration;
 
 class AttandeeTest extends \PHPUnit\Framework\TestCase
 {
@@ -35,7 +36,6 @@ class AttandeeTest extends \PHPUnit\Framework\TestCase
                 'singleEvents' => true
             )
         );
-
         $this->assertNotNull($events);
     }
 }
