@@ -69,7 +69,7 @@ class Attendee
                     $this->filterCalendarId(
                         $this->config->getCalendarId()
                     ),
-                   $options
+                    $options
                 );
             default:
                 throw new \Exception("Type undefined", 1);
@@ -97,7 +97,7 @@ class Attendee
     }
     /**
      * Get configuration
-     * @return AttendeConfiguration
+     * @return AttandeConfiguration
      */
     public function getConfig()
     {

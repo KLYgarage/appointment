@@ -43,7 +43,6 @@ function isSlotAvailable($startTime, $endTime, $config = array(), $events)
     $day = strtolower((date_format($date, "l")));
     $startHours = substr($startTime, 11, 5);
     $endHours = substr($endTime, 11, 5);
-
     $slotsOnConfig = array_column($config, $day);
 
     if (!empty($slotsOnConfig)) {
