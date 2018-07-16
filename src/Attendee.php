@@ -54,9 +54,11 @@ class Attendee
     }
     /**
      * List events based on calendarID
+     * @param  string $startTime string date('c') format
+     * @param  string $endTime string date('c') format
      * @return bool|array
      */
-    public function listEvents()
+    public function listEvents($startTime, $endTime)
     {
         $calendarId = $this->config->getCalendarId();
 
@@ -64,7 +66,8 @@ class Attendee
             'maxResults'   => 10,
             'orderBy'      => 'startTime',
             'singleEvents' => true,
-            'timeMin'      => date('c'),
+            'timeMin'      => $startTime,
+            'timeMax'      => $endTime
         );
 
         try {
@@ -80,6 +83,14 @@ class Attendee
         } catch (\Google_Service_Exception $e) {
             return false;
         }
+    }
+    /**
+     * Get configuration
+     * @return [type] [description]
+     */
+    public function getConfig()
+    {
+        return $this->config;
     }
     /**
      * Get google client
