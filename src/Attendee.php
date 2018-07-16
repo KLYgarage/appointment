@@ -89,7 +89,7 @@ class Attendee
             $calendarId,
             $options
         );
-        $events  = array();
+        $events = array();
         foreach ($results->getItems() as $event) {
             array_push($events, $event);
         }
@@ -97,7 +97,7 @@ class Attendee
     }
     /**
      * Get configuration
-     * @return AttandeConfiguration
+     * @return AttandeeConfiguration
      */
     public function getConfig()
     {
