@@ -97,7 +97,7 @@ function createDateRFC($h, $m)
 {
     $today = date("Y-m-d");
     $date = new \DateTime($today);
-    $date->setTime((int)$h, (int)$m);
+    $date->setTime((int) $h, (int) $m);
     return $date->format('Y-m-d\TH:i:sP');
 }
 /**
