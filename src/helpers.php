@@ -87,8 +87,8 @@ function getDuration($dateTime1, $dateTime2)
 }
 /**
  * Create Date
- * @param  int $h
- * @param  int $m
+ * @param  string $h
+ * @param  string $m
  * @return string
  */
 function createDateRFC($h, $m)
