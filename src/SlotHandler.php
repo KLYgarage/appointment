@@ -120,7 +120,7 @@ class SlotHandler
      * Create slot object
      * @param  int $duration
      * @param  string $t1
-     * @param  [type] $t2
+     * @param  string $t2
      * @return \StdClass
      */
     private function createSlotObject($duration, $t1, $t2)
