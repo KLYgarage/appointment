@@ -89,7 +89,12 @@ function getAvailableSlots($startTime, $endTime, $config = array(), $events)
     }
     return $availableSlots;
 }
-
+/**
+ * get interval between two times
+ * @param  string $startTime example. 10:00
+ * @param  string $endTime   example. 11:00
+ * @return int
+ */
 function getInterval($startTime, $endTime)
 {
     $start = strtotime('1/1/1990 ' . $startTime);
@@ -97,12 +102,20 @@ function getInterval($startTime, $endTime)
 
     return ($end - $start) / 60;
 }
-
+/**
+ * get hour from rfc date format
+ * @param  string $date ex. 2018-07-09T14:30:00+07:00
+ * @return string
+ */
 function getHourFromRFCDate($date)
 {
     return substr($date, 11, 5);
 }
-
+/**
+ * mapping start & end dates from events object
+ * @param  array $events
+ * @return array
+ */
 function tmpEventsToArray($events)
 {
     $result = array_map(function ($event) {
