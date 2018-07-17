@@ -15,6 +15,7 @@ class Attendee
 
     private $config;
 
+    private $events;
 
     const FETCH_LIST_EVENTS = 'list_events';
 
@@ -65,12 +66,13 @@ class Attendee
     {
         switch ($type) {
             case self::FETCH_LIST_EVENTS:
-                return $this->listEvents(
-                    $this->filterCalendarId(
-                        $this->config->getCalendarId()
-                    ),
-                    $options
-                );
+                return
+                    $this->listEvents(
+                        $this->filterCalendarId(
+                            $this->config->getCalendarId()
+                        ),
+                        $options
+                    );
             default:
                 throw new \Exception("Type undefined", 1);
 
@@ -89,11 +91,8 @@ class Attendee
             $calendarId,
             $options
         );
-        $events = array();
-        foreach ($results->getItems() as $event) {
-            array_push($events, $event);
-        }
-        return $events;
+
+        return $results->getItems();
     }
     /**
      * Get configuration
