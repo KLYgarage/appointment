@@ -47,9 +47,11 @@ class AttendeeTest extends \PHPUnit\Framework\TestCase
         $SlotHandler = new SlotHandler();
 
         $schedules = $SlotHandler->getAvailableSlots(
-        20,
-        $this->config->getDateSlots()[0]['monday'],
-        $this->events
-    );
+            20,
+            $this->config->getDateSlots()[0]['monday'],
+            $this->events
+        );
+
+        //print_r($schedules);
     }
 }

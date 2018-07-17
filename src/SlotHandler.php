@@ -19,7 +19,6 @@ class SlotHandler
      */
     public function getAvailableSlots($duration, $daySlot, $events)
     {
-        //print_r($daySlot);
         $schedules = array();
 
         $daySlot = explode("-", $daySlot);
@@ -38,14 +37,20 @@ class SlotHandler
 
         $d2 = createDateRFC($endTime[0], $endTime[1]);
 
-        $schedules[] = $this->filterDuration(
+        $schedules [] = $this->createSlotObject(
+            $this->filterDuration(
 
-            getDuration(
+                getDuration(
 
-                $events[0]->getStart()->getDateTime(),
-                $d1
+                    $events[0]->getStart()->getDateTime(),
+                    $d1
+                ),
+                $duration
             ),
-            $duration
+            $d1,
+            $events[0]->getStart()->getDateTime()
+
+
         );
 
         $numOfEvents = count($events);
@@ -61,19 +66,27 @@ class SlotHandler
                 $duration
             );
 
-            $schedules[] = $duration;
+            $schedules[] = $this->createSlotObject(
+                $duration,
+                $eventBefore->getEnd()->getDateTime(),
+                $eventAfter->getStart()->getDateTime()
+            );
         }
 
-        $schedules[] = $this->filterDuration(
+        $schedules [] = $this->createSlotObject(
+            $this->filterDuration(
             getDuration(
 
                 $d2,
                 $events[count($events) - 1]->getEnd()->getDateTime()
             ),
             $duration
+        ),
+        $events[count($events) - 1]->getEnd()->getDateTime(),
+        $d2
         );
 
-        return $schedules;
+        return $this->filterSlots($schedules);
     }
     /**
      * Filter duration
@@ -87,5 +100,35 @@ class SlotHandler
             return $durationAvailable;
         }
         return -1;
+    }
+    /**
+     * Filter slots
+     * @param  array $slots
+     * @return array
+     */
+    private function filterSlots($slots)
+    {
+        $filtered = array();
+        foreach ($slots as $slot) {
+            if ($slot->duration > -1) {
+                array_push($filtered, $slot);
+            }
+        }
+        return $filtered;
+    }
+    /**
+     * Create slot object
+     * @param  int $duration
+     * @param  string $t1
+     * @param  [type] $t2
+     * @return \StdClass
+     */
+    private function createSlotObject($duration, $t1, $t2)
+    {
+        $object           = new \StdClass;
+        $object->t1       = $t1;
+        $object->t2       = $t2;
+        $object->duration = $duration;
+        return $object;
     }
 }

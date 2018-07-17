@@ -81,6 +81,8 @@ function filterArrayKey($arr = array(), $allowedKey = array())
  */
 function getDuration($dateTime1, $dateTime2)
 {
+    $dateTime1 = setDate($dateTime1)->format('Y-m-d\TH:i:sP');
+    $dateTime2 = setDate($dateTime2)->format('Y-m-d\TH:i:sP');
     $duration = (strtotime($dateTime1)-strtotime($dateTime2))/60;
 
     return $duration;
@@ -97,4 +99,16 @@ function createDateRFC($h, $m)
     $date = new \DateTime($today);
     $date->setTime((int)$h, (int)$m);
     return $date->format('Y-m-d\TH:i:sP');
+}
+/**
+ * Set Date
+ * @param \DateTime
+ */
+function setDate($date)
+{
+    $newDate = new \DateTime($date);
+
+    $newDate->setDate(1980, 1, 1);
+
+    return $newDate;
 }
