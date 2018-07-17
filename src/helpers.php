@@ -55,7 +55,6 @@ function getAvailableSlots($startTime, $endTime, $config = array(), $events)
 
         if ($startHour >= $startOnConfig && $endHour <= $endOnConfig) {
             $bookedSlots = tmpEventsToArray($events);
-
             $bookedSlotsLength = count($bookedSlots);
             
             if ($bookedSlotsLength == 0) {
