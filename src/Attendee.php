@@ -21,7 +21,7 @@ class Attendee
 
     /**
      * Consturctor
-     * @param AttandeeConfiguration $config
+     * @param AttendeeConfiguration $config
      */
     public function __construct(AttendeeConfiguration $config)
     {
@@ -96,7 +96,7 @@ class Attendee
     }
     /**
      * Get configuration
-     * @return AttandeeConfiguration
+     * @return AttendeeConfiguration
      */
     public function getConfig()
     {
