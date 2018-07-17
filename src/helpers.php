@@ -46,7 +46,6 @@ function getAvailableSlots($startTime, $endTime, $config = array(), $events)
     $slotsOnConfig = array_column($config, $day);
     $availableSlots = [];
 
-    $duration = getInterval($startTime, $endTime);
     //temporary hardcoded
     $eventTypeDuration = 60;
 
@@ -63,7 +62,7 @@ function getAvailableSlots($startTime, $endTime, $config = array(), $events)
                 array_push($availableSlots, $slotsOnConfig[0]);
             }
 
-            for ($i=0; $i < $bookedSlotsLength; $i++) {
+            for ($i = 0; $i < $bookedSlotsLength; $i++) {
                 if ($i == 0 && getInterval($startOnConfig, getHourFromRFCDate($bookedSlots[$i]['start'])) >= $eventTypeDuration) {
                     array_push($availableSlots, [
                         'start'=>$startOnConfig,
@@ -71,18 +70,18 @@ function getAvailableSlots($startTime, $endTime, $config = array(), $events)
                     ]);
                 }
 
-                if ($i == ($bookedSlotsLength-1) && getInterval(getHourFromRFCDate($bookedSlots[$i]['end']), $endOnConfig) >= $eventTypeDuration) {
+                if ($i == ($bookedSlotsLength - 1) && getInterval(getHourFromRFCDate($bookedSlots[$i]['end']), $endOnConfig) >= $eventTypeDuration) {
                     array_push($availableSlots, [
                         'start'=>$bookedSlots[$i]['end'],
                         'end'=>$endOnConfig
                     ]);
                 }
 
-                if ($i < ($bookedSlotsLength-1)) {
-                    if (getInterval(getHourFromRFCDate($bookedSlots[$i]['end']), getHourFromRFCDate($bookedSlots[$i+1]['start'])) >= $eventTypeDuration) {
+                if ($i < ($bookedSlotsLength - 1)) {
+                    if (getInterval(getHourFromRFCDate($bookedSlots[$i]['end']), getHourFromRFCDate($bookedSlots[$i + 1]['start'])) >= $eventTypeDuration) {
                         array_push($availableSlots, [
                             'start'=>$bookedSlots[$i]['end'],
-                            'end'=>$bookedSlots[$i+1]['start']
+                            'end'=>$bookedSlots[$i + 1]['start']
                         ]);
                     }
                 }
@@ -94,8 +93,8 @@ function getAvailableSlots($startTime, $endTime, $config = array(), $events)
 
 function getInterval($startTime, $endTime)
 {
-    $start = strtotime('1/1/1990 '.$startTime);
-    $end = strtotime('1/1/1990 '.$endTime);
+    $start = strtotime('1/1/1990 ' . $startTime);
+    $end = strtotime('1/1/1990 ' . $endTime);
 
     return ($end - $start) / 60;
 }
