@@ -37,6 +37,14 @@ class SlotHandler
 
         $d2 = createDateRFC($endTime[0], $endTime[1]);
 
+        if (empty($events)) {
+            return $this->createSlotObject(
+                getDuration($d2, $d1),
+                $d1,
+                $d2
+            );
+        }
+
         $schedules [] = $this->createSlotObject(
             $this->filterDuration(
 
