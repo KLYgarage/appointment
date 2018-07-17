@@ -3,7 +3,7 @@
 namespace Appointment\Test;
 
 use Appointment\Attendee;
-use Appointment\AttandeeConfiguration;
+use Appointment\AttendeeConfiguration;
 use function Appointment\getAvailableSlots;
 use function Appointment\tmpEventsToArray;
 
