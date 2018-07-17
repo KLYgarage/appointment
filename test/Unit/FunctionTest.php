@@ -16,7 +16,7 @@ class FunctionTest extends \PHPUnit\Framework\TestCase
 
     public function setUp()
     {
-        $this->attendeeConfiguration = new AttandeeConfiguration();
+        $this->attendeeConfiguration = new AttendeeConfiguration();
         $this->attendee = new Attendee($this->attendeeConfiguration);
         $this->startTime = '2018-07-09T14:30:00+07:00';
         $this->endTime = '2018-07-09T15:30:00+07:00';
