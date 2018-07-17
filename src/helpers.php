@@ -85,6 +85,12 @@ function getDuration($dateTime1, $dateTime2)
 
     return $duration;
 }
+/**
+ * Create Date
+ * @param  int $h
+ * @param  int $m
+ * @return string
+ */
 function createDateRFC($h, $m)
 {
     $today = date("Y-m-d");

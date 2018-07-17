@@ -2,8 +2,8 @@
 
 namespace Appointment;
 
-use Appointment\createDateRFC;
-use Appointment\getDuration;
+use function Appointment\createDateRFC;
+use function Appointment\getDuration;
 
 /**
  *
@@ -14,7 +14,7 @@ class SlotHandler
      * Get available slots
      * @param  int $duration
      * @param  string $daySlot
-     * @param  \Google_Calendar_Service_Event $events
+     * @param  \Google_Service_Calendar_Event $events
      * @return array
      */
     public function getAvailableSlots($duration, $daySlot, $events)
@@ -24,7 +24,8 @@ class SlotHandler
 
         $daySlot = explode("-", $daySlot);
 
-        $slots;
+        $slots = [];
+
         foreach ($daySlot as $slot) {
             $slots[] = trim($slot);
         }
@@ -47,7 +48,9 @@ class SlotHandler
             $duration
         );
 
-        for ($i = 1; $i < count($events); $i++) {
+        $numOfEvents = count($events);
+
+        for ($i = 1; $i < $numOfEvents; $i++) {
             $eventBefore = $events[$i - 1];
             $eventAfter  = $events[$i];
             $duration    = $this->filterDuration(
