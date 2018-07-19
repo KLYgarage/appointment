@@ -23,7 +23,7 @@ class SlotHandler
      * @return array
      */
     public function getAvailableSlots(
-        $slotsOnConfig = array(),
+        $slotsOnConfig = '',
         $events = array(),
         $start,
         $end,
@@ -101,7 +101,7 @@ class SlotHandler
      * @param  array $events
      * @return array
      */
-    private function getBookedSlotsFromEvents($events)
+    public function getBookedSlotsFromEvents($events)
     {
         $result = array_map(function ($event) {
             $startTime = getTimeFromDate(
@@ -128,7 +128,7 @@ class SlotHandler
      * @param  array    $config
      * @return array
      */
-    private function getSlotAvailableOnConfig($date, $config)
+    public function getSlotAvailableOnConfig($date, $config)
     {
         $day    = getDayFromDate($date);
         $slots  = $config;

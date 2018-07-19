@@ -84,7 +84,7 @@ function getTimeFromDate($date)
 /**
  * Filter date instance
  * @param  \DateTime|bool $date
- * @return \DateTime
+ * @return \DateTime|bool
  * @throws \Exception
  */
 function filterDate($date)
