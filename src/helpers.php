@@ -94,3 +94,17 @@ function filterDate($date)
     }
     return $date;
 }
+/**
+ * Filter key existence on array
+ * @param  array $arr
+ * @param  mixed $key
+ * @return mixed
+ * @throws \Exception
+ */
+function filterKeyOnArr($arr, $key)
+{
+    if (!isset($arr[$key])) {
+        throw new \Exception("Key undefined", 1);
+    }
+    return $arr[$key];
+}

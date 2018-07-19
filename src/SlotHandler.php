@@ -3,6 +3,7 @@
 namespace Appointment;
 
 use function Appointment\filterDate;
+use function Appointment\filterKeyOnArr;
 use function Appointment\getDayFromDate;
 use function Appointment\getIntervalBetweenTime;
 use function Appointment\getTimeFromDate;
@@ -15,7 +16,7 @@ class SlotHandler
     const DEFAULT_DURATION = 60;
     /**
      * getAvailableSlots
-     * @param  string    $slotsOnConfig
+     * @param  array    $slotsOnConfig
      * @param  array     $events
      * @param  \DateTime $start
      * @param  \DateTime $end
@@ -23,7 +24,7 @@ class SlotHandler
      * @return array
      */
     public function getAvailableSlots(
-        $slotsOnConfig = '',
+        $slotsOnConfig = array(),
         $events = array(),
         $start,
         $end,
@@ -31,7 +32,9 @@ class SlotHandler
     ) {
         $availableSlots = [];
 
-        $timeSlotOnConfig  = $this->getTimeSlot($slotsOnConfig);
+        $timeSlotOnConfig = $this->getTimeSlot(
+            filterKeyOnArr($slotsOnConfig, 0)
+        );
         $startTimeOnConfig = $timeSlotOnConfig['start'];
         $endTimeOnConfig   = $timeSlotOnConfig['end'];
         $startTime         = getTimeFromDate($start);
