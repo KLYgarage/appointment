@@ -127,8 +127,8 @@ class SlotHandler
     }
     /**
      * getSlotAvailableOnConfig
-     * @param  \DateTime $date
-     * @param  array    $config
+     * @param  string $date
+     * @param  array  $config
      * @return array
      */
     public function getSlotAvailableOnConfig($date, $config)
