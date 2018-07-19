@@ -22,13 +22,13 @@ class SlotHandler
      * @param  integer   $duration
      * @return array
      */
-    public function getAvailableSlots
-    (
+    public function getAvailableSlots(
         $slotsOnConfig = array(),
         $events = array(),
         $start,
         $end,
-        $duration = self::DEFAULT_DURATION) {
+        $duration = self::DEFAULT_DURATION
+    ) {
         $availableSlots = [];
 
         $timeSlotOnConfig  = $this->getTimeSlot($slotsOnConfig);
@@ -58,8 +58,8 @@ class SlotHandler
      * @param  int $duration
      * @return array
      */
-    public function getAvailableSlotsBetweenBookedSlots
-    ($bookedSlots,
+    public function getAvailableSlotsBetweenBookedSlots(
+        $bookedSlots,
         $startTimeOnConfig,
         $endTimeOnConfig,
         $duration

@@ -87,8 +87,9 @@ function getTimeFromDate($date)
  * @return \DateTime
  * @throws \Exception
  */
-function filterDate($date){
-    if(!$date){
+function filterDate($date)
+{
+    if (!$date) {
         throw new \Exception("Invalid date", 1);
     }
     return $date;
