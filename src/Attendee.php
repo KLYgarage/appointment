@@ -82,7 +82,7 @@ class Attendee
      * List events based on calendarID
      * @param  string $startTime string date('c') format
      * @param  string $endTime string date('c') format
-     * @return array
+     * @return \Google_Service_Calendar_Event
      * @throws \Google_Service_Exception
      */
     public function listEvents($calendarId, $options = array())

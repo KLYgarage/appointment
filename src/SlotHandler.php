@@ -77,7 +77,7 @@ class SlotHandler
     /**
      * mapping start & end dates
      * from events object
-     * @param  array $events
+     * @param \Google_Service_Calendar_Event $events
      * @return array
      */
     public function getBookedSlotsFromEvents($events)
