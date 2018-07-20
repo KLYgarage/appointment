@@ -18,7 +18,7 @@ class SlotHandler
     /**
      * Get available slots
      * @param  string $dateSelected
-     * @param  Appointment\Attendee $attendee
+     * @param  \Appointment\Attendee $attendee
      * @param  int $duration
      * @return array
      */
@@ -61,8 +61,9 @@ class SlotHandler
         );
         array_unshift($eventsOnCalendar, array_shift($timelines));
         array_push($eventsOnCalendar, array_shift($timelines));
+        $numOfEvents = count($eventsOnCalendar);
         $slotsAvailable = [];
-        for ($i = 1; $i < count($eventsOnCalendar); $i++) {
+        for ($i = 1; $i < $numOfEvents; $i++) {
             $slotsAvailable[] = $this->createAvailSlot(
                 $eventsOnCalendar[$i - 1]['end'],
                 $eventsOnCalendar[$i]['start'],
@@ -123,7 +124,7 @@ class SlotHandler
      * getSlotAvailableOnConfig
      * @param  string $date
      * @param  array  $config
-     * @return array
+     * @return string
      */
     private function getSlotAvailableOnConfig($date, $config)
     {
