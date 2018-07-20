@@ -13,7 +13,7 @@ class SlotHandlerTest extends \PHPUnit\Framework\TestCase
     private $container;
     public function setUp()
     {
-        $this->container   = require __DIR__ . '/../bootstrap.php';
+        $this->container   = require __DIR__ . '/../container.php';
         $this->slotHandler = new SlotHandler();
     }
 

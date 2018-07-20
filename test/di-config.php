@@ -1,13 +1,10 @@
 <?php
 
 use function DI\create;
+use function DI\autowire;
 use Appointment\AttendeeConfiguration;
 use Appointment\Attendee;
 
 return [
-    Attendee::class=> function () {
-        return new Attendee(
-            new AttendeeConfiguration()
-        );
-    }
+     Attendee::class => autowire(Attendee::class)
 ];

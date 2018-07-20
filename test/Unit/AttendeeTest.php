@@ -18,10 +18,10 @@ class AttendeeTest extends \PHPUnit\Framework\TestCase
 
     public function setUp()
     {
-        $this->container = require __DIR__ . '/../bootstrap.php';
+        $this->container = require __DIR__ . '/../container.php';
 
         $this->attendee = $this->container->get(Attendee::class);
-        
+
         $this->events = $this->attendee->makeRequest(
             $this->attendee::FETCH_LIST_EVENTS,
             $optParams = array(
