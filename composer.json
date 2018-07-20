@@ -9,7 +9,8 @@
         }
     ],
     "require": {
-        "google/apiclient": "^2.2"
+        "google/apiclient": "^2.2",
+        "php-di/php-di": "^6.0"
     },
     "autoload": {
          "psr-4": {"Appointment\\": "src/"},
