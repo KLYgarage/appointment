@@ -22,7 +22,7 @@ class SlotHandlerTest extends \PHPUnit\Framework\TestCase
     public function testGetAvailableSlots()
     {
         $dateSelected = date('2018-07-20');
-
+        
         print_r(
             $this->slotHandler->getAvailableSlots($dateSelected, $this->attendee)
         );

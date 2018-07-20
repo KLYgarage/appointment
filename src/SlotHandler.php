@@ -4,6 +4,7 @@ namespace Appointment;
 
 use function Appointment\createDateRFC;
 use function Appointment\filterDate;
+use function Appointment\filterKeyOnArr;
 use function Appointment\getDayFromDate;
 use function Appointment\getIntervalBetweenTime;
 use function Appointment\getTimeFromDate;
@@ -99,6 +100,14 @@ class SlotHandler
 
         return $result;
     }
+    /**
+     * Create slot availaible
+     * @param  string $before
+     * @param  string $after
+     * @param  string $dateSelected
+     * @param  int $duration
+     * @return array
+     */
     private function createAvailSlot($before, $after, $dateSelected, $duration)
     {
         $interval = getIntervalBetweenTime($before, $after);
@@ -134,20 +143,5 @@ class SlotHandler
             return trim($time);
         }, $times);
         return array_combine(["start", "end"], $result);
-    }
-    /**
-     * Filter slots
-     * @param  array $slots
-     * @return array
-     */
-    private function filterSlots($slots)
-    {
-        $filtered = array();
-        foreach ($slots as $slot) {
-            if ($slot->duration > -1) {
-                array_push($filtered, $slot);
-            }
-        }
-        return $filtered;
     }
 }
