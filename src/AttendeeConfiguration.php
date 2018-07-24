@@ -5,27 +5,58 @@ namespace Appointment;
 use function Appointment\filterFilePath;
 
 /**
- *
+ * Class to provide initial configuration
+ * for appointment app
+ * Values provided from file constants
  */
 class AttendeeConfiguration
 {
-    private $applicationName;
-
-    private $calendarId;
-
-    private $accessType;
-
-    private $clientSecret;
-
-    private $oauth;
-
-    private $dateSlots;
-
-    private $eventTypes;
-
+    /**
+    * File to provide app settings
+    */
     const CONFIGURATION_FILE = 'config.json';
-
+    /**
+     * File to provide credentials for google api
+     * calendar
+     */
     const CREDENTIAL_FILE = 'credential.json';
+    /**
+     * Application name
+     * @var string
+     */
+    private $applicationName;
+    /**
+     * Calendar used in google calendar
+     * @var string
+     */
+    private $calendarId;
+    /**
+     * Access type for google api calendar
+     * @var string
+     */
+    private $accessType;
+    /**
+     * Client secret for google api calendar
+     * @var string
+     */
+    private $clientSecret;
+    /**
+     * Oauth for google api calendar
+     * @var string
+     */
+    private $oauth;
+    /**
+     * Usable activity slots
+     * e.g : monday :{10:00 - 17:00}
+     * @var array
+     */
+    private $dateSlots;
+    /**
+     * Event types
+     * e.g : interview,meeting
+     * @var array
+     */
+    private $eventTypes;
 
     /**
      * Constructor

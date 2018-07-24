@@ -16,11 +16,20 @@ use Appointment\EventConfiguration;
  */
 class SlotHandler
 {
+    /**
+     * Default duration provided
+     * For activity (minutes)
+     */
     const DEFAULT_DURATION = 60;
-
+    /**
+     * Default constructor
+     * Used for set time zone
+     */
     public function __construct()
     {
-        date_default_timezone_set(EventConfiguration::EVENT_DEFAULT_TIMEZONE);
+        date_default_timezone_set(
+            EventConfiguration::EVENT_DEFAULT_TIMEZONE
+        );
     }
     /**
      * Get available slots
@@ -80,7 +89,6 @@ class SlotHandler
         }
         return array_filter($slotsAvailable);
     }
-
     /**
      * mapping start & end dates
      * from events object
