@@ -24,14 +24,14 @@ class Attendee
     private $googleService;
     /**
      * Handler for slot selection
-     * @var Appointment\SlotHandler
+     * @var \Appointment\SlotHandler
      */
     private $slotHandler;
     /**
      * Configuration
      * including credential
      * And application settings
-     * @var Appointment\AttendeeConfiguration
+     * @var \Appointment\AttendeeConfiguration
      */
     private $config;
     /**
