@@ -45,12 +45,12 @@ class EventConfiguration
     protected $description;
     /**
      * Event's Start Time (RFC Format)
-     * @var string
+     * @var array
      */
     protected $start;
     /**
      * Event's End Time (RFC Format)
-     * @var string
+     * @var array
      */
     protected $end;
     /**
