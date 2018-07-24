@@ -11,9 +11,8 @@ use function Appointment\filterFilePath;
  */
 class AttendeeConfiguration
 {
-     /**
-     *File to provide
-     *app settings
+    /**
+     * File to provide app settings
      */
     const CONFIGURATION_FILE = 'config.json';
     /**
