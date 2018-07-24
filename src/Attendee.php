@@ -8,22 +8,39 @@ use Appointment\SlotHandler;
 use function Appointment\getStandardDate;
 
 /**
- * Google Api Client
+ * Class to interact with Google Api Client
  */
 class Attendee
 {
+    /**
+     * Google client
+     * @var \Google_Client
+     */
     private $googleClient;
-
+    /**
+     * Google Service
+     * @var \Google_Service_Calendar
+     */
     private $googleService;
-
+    /**
+     * Handler for slot selection
+     * @var \Appointment\SlotHandler
+     */
     private $slotHandler;
-
+    /**
+     * Configuration
+     * including credential
+     * And application settings
+     * @var \Appointment\AttendeeConfiguration
+     */
     private $config;
-
-    private $events;
-
+    /**
+     * Fetch list event
+     */
     const FETCH_LIST_EVENTS = 'list_events';
-
+    /**
+     * Submit event
+     */
     const SUBMIT_EVENT = 'submit_event';
 
     /**
