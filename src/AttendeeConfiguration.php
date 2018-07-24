@@ -12,7 +12,8 @@ use function Appointment\filterFilePath;
 class AttendeeConfiguration
 {
     /**
-    * File to provide app settings
+    *File to provide
+    *app settings
     */
     const CONFIGURATION_FILE = 'config.json';
     /**
@@ -37,12 +38,12 @@ class AttendeeConfiguration
     private $accessType;
     /**
      * Client secret for google api calendar
-     * @var string
+     * @var array
      */
     private $clientSecret;
     /**
      * Oauth for google api calendar
-     * @var string
+     * @var array
      */
     private $oauth;
     /**
