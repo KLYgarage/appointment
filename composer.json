@@ -35,11 +35,12 @@
         "test:attendee:verbose":"./vendor/bin/phpunit  --configuration=phpunit.xml --testsuite attendee -vvv --debug",
         "test:slot:verbose":"./vendor/bin/phpunit  --configuration=phpunit.xml --testsuite slot -vvv --debug",
         "test:event_factory:verbose":"./vendor/bin/phpunit  --configuration=phpunit.xml --testsuite event_factory -vvv --debug",
-        "cs-fix": "php ./php-cs-fixer fix ./src -vvv --rules=@PSR2",
-        "cs-fix:test": "php ./php-cs-fixer fix ./test -vvv --rules=@PSR2"
+        "cs-check": "ecs check src test",
+        "cs-fix": "ecs check src test --fix"
     },
     "require-dev": {
         "php-di/php-di": "^6.0",
-        "phpunit/phpunit": "^7"
+        "phpunit/phpunit": "^7",
+        "symplify/easy-coding-standard": "^4.5"
     }
 }

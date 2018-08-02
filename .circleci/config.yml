@@ -15,5 +15,5 @@ jobs:
           paths:
             - ./vendor
           key: v1-dependencies-{{ checksum "composer.json" }}
-      - run: composer run cs-fix
+      - run: composer run cs-check
       - run: composer run test
