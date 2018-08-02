@@ -31,14 +31,16 @@
         }
     },
     "scripts": {
-        "test": "php ./phpunit --bootstrap ./test/bootstrap.php ./test/",
-        "test:attendee:verbose":"php ./phpunit  --configuration=phpunit.xml --testsuite attendee -vvv --debug",
-        "test:slot:verbose":"php ./phpunit  --configuration=phpunit.xml --testsuite slot -vvv --debug",
-        "test:event_factory:verbose":"php ./phpunit  --configuration=phpunit.xml --testsuite event_factory -vvv --debug",
-        "cs-fix": "php ./php-cs-fixer fix ./src -vvv --rules=@PSR2",
-        "cs-fix:test": "php ./php-cs-fixer fix ./test -vvv --rules=@PSR2"
+        "test": "phpunit  --bootstrap ./test/bootstrap.php ./test/",
+        "test:attendee:verbose":"phpunit  --configuration=phpunit.xml --testsuite attendee -vvv --debug",
+        "test:slot:verbose":"phpunit  --configuration=phpunit.xml --testsuite slot -vvv --debug",
+        "test:event_factory:verbose":"phpunit  --configuration=phpunit.xml --testsuite event_factory -vvv --debug",
+        "cs-check": "ecs check src test",
+        "cs-fix": "ecs check src test --fix"
     },
     "require-dev": {
-        "php-di/php-di": "^6.0"
+        "php-di/php-di": "^6.0",
+        "phpunit/phpunit": "^7",
+        "symplify/easy-coding-standard": "^4.5"
     }
 }
